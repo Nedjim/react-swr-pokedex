@@ -1,12 +1,10 @@
 import React from 'react';
 import useSWR from 'swr';
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
 const Pokemon = (props) => {
     const {name} = props.pokemon;
     const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
-    const {data, error} = useSWR(url, fetcher);
+    const {data, error} = useSWR(url);
 
     if (error) {
         return <h1>Something went wrong!</h1>
