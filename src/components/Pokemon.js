@@ -1,10 +1,9 @@
 import React from 'react';
-import useSWR from 'swr';
+import {useRequest} from '../hooks';
 
 const Pokemon = (props) => {
     const {name} = props.pokemon;
-    const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
-    const {data, error} = useSWR(url);
+    const {data, error} = useRequest('/pokemon', name);
 
     if (error) {
         return <h1>Something went wrong!</h1>
